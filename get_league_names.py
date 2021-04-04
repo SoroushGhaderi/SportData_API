@@ -9,8 +9,8 @@ import requests
 
 def url_request():
     headers = {"apikey": config.apikey}
-    params = (("continent", "Europe"),)
-    response = requests.get('https://app.sportdataapi.com/api/v1/soccer/countries', headers=headers, params=params)
+    params = (("country_id", "42"),)
+    response = requests.get('https://app.sportdataapi.com/api/v1/soccer/leagues', headers=headers, params=params)
     return response.json()
 
 
@@ -25,7 +25,7 @@ def main():
         os.mkdir("data")
 
     response_json = url_request()
-    save_object("data/country_names.json", response_json, "w")
+    save_object("data/england_league_names.json", response_json, "w")
 
 
 if __name__ == "__main__":
